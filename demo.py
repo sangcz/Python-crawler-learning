@@ -5,7 +5,7 @@ import re
 from multiprocessing import Pool
 import time
 
-client = pymongo.MongoClient()
+client = pymongo.MongoClient('127.0.0.1', 27017) # 配置成自己的mongo数据库地址
 mydb = client['mydb']
 generalData = mydb['generalData']
 checkStr = ['blockchain', 'digital+currency', 'crypto+currency', 'token', 'virtual+currency', 'private+keys', 'sharing+community', 'EOS', 'Bitcoin', 'Ethereum', 'Zec', 'Bts', 'Litecoin', 'VitalikButerin','Amber+Baldet', 'Jihan', 'Erik+Voorhees', 'Joe+Lubin', 'Jamie+Dimon', 'Dorian+S.+Nakamoto']
@@ -56,7 +56,7 @@ def get_info(url, imgSrc, type):
 
 # 请求代理
 def getIpInfo():
-    req = requests.get('')
+    req = requests.get('proxy address') # 配置成自己的代理地址
     if (req.status_code == 200):
         for item in req.json():
             return item['protocol'] + "://" + item['host']
